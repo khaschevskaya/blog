@@ -1,0 +1,4 @@
+[submodule "khaschevskaya/public"]
+	path = khaschevskaya/public
+	url = https://github.com/khaschevskaya/khaschevskaya.github.io.git
+	branch = main

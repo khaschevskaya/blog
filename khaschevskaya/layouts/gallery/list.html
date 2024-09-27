@@ -1,0 +1,21 @@
+{{ define "main" }}
+<h1>{{ .Page.Title }}</h1>
+{{ .Content }}
+<div class="image-grid">
+    {{ range sort .Data.Pages "Date" "desc" }}
+        {{ if and (isset .Params "image") .Params.image }}
+            <div class="gallery-item">
+                <a href="{{ .Permalink }}" title="{{ .Title }}">
+                    {{ $image := .Page.Resources.GetMatch .Params.image }}
+                    {{ with $image }}
+                        {{ $thumb := .Resize "1000x" }}
+                        <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" class="img-responsive">
+                    {{ end }}
+                </a>
+                <!-- Display the folder/series name (the title of the page/post) -->
+                <h3>{{ .Title }}</h3>
+            </div>
+        {{ end }}
+    {{ end }}
+</div>
+{{ end }}
